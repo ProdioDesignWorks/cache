@@ -72,12 +72,45 @@ const cache = {
     return Object.keys(this.cache);
   },
 
-  async getStore() {
+  async dump() {
     return this.cache;
   },
-  getStoreSync() {
+  dumpSync() {
     return this.cache;
   },
+
+  async reStore(data, persistOld = true){
+    if(!data){
+      throw new Error('data undefined');
+    }
+
+    if(persistOld){
+      const snap = this.cache;
+      const o = Object.assign({}, snap, data);
+      if (this.storageEnabled) await this.storageProvider.updateStoreSync(this.storeName, o);
+      this.cache = o;
+    }else{
+      const o = Object.assign({}, data);
+      if (this.storageEnabled) await this.storageProvider.updateStoreSync(this.storeName, o);
+      this.cache = o;
+    }
+  },
+  reStoreSync(data, persistOld = true){
+    if(!data){
+      throw new Error('data undefined');
+    }
+
+    if(persistOld){
+      const snap = this.cache;
+      const o = Object.assign({}, snap, data);
+      if (this.storageEnabled) this.storageProvider.updateStore(this.storeName, o);
+      this.cache = o;
+    }else{
+      const o = Object.assign({}, data);
+      if (this.storageEnabled) this.storageProvider.updateStore(this.storeName, o);
+      this.cache = o;
+    }
+  }
 };
 
 export default cache;
