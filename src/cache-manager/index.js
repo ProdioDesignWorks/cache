@@ -71,6 +71,13 @@ const cache = {
   keysSync() {
     return Object.keys(this.cache);
   },
+
+  async getStore() {
+    return this.cache;
+  },
+  getStoreSync() {
+    return this.cache;
+  },
 };
 
 export default cache;
