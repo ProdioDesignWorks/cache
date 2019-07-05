@@ -1,7 +1,7 @@
 import StorageProvider from './storage-provider';
 import Cache from './cache-manager';
 
-const modes = [ StorageProvider.REDIS_MODE, StorageProvider.LOCAL_DISK_MODE ];
+const modes = [StorageProvider.REDIS_MODE, StorageProvider.LOCAL_DISK_MODE];
 
 const manager = {
   REDIS_MODE: StorageProvider.REDIS_MODE,

@@ -1,5 +1,5 @@
 {
-  "name": "memory-cache",
+  "name": "cache-mem",
   "version": "1.0.0",
   "description": "cache memory manager for nodejs",
   "main": "index.js",
